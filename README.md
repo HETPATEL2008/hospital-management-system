@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Hospital Management System
 
 A console-based Hospital Management System built 
@@ -246,4 +245,3 @@ and Service patterns
 
 This project using **Maven** for dependency
 management.
->>>>>>> fce1045d5f56e93d0b980bc6a164019e5adc9ae9
