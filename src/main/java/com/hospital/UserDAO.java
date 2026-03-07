@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    // Logger to tracking users operations
+    // Logger for tracking user operations
     private static final Logger logger = LoggerFactory.getLogger(UserDAO.class);
 
     // Method for find by username
