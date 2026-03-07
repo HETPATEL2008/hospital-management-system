@@ -121,3 +121,9 @@ and Service patterns
 
 This project using **Maven** for dependency
 management.
+
+
+
+## License
+
+MIT License — see [LICENSE](./LICENSE)
