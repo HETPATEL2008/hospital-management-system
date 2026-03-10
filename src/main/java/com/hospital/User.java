@@ -119,6 +119,9 @@ public class User {
 
     // Setters
     public void setUserId(int userId) {
+        if (userId <= 0) {
+            throw new IllegalArgumentException("User ID must be a positive number.");
+        }
         this.userId = userId;
     }
 
