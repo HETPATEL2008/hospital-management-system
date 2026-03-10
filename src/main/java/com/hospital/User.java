@@ -6,7 +6,7 @@ public class User {
     private int userId;
     private String username;
     private String password;
-    private String role;  // ADMIN or RECEPTIONIST
+    private String role;     // ADMIN or RECEPTIONIST
 
     // Constructor for register new user
     public User(String username, String password, String role) {
