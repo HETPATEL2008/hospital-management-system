@@ -19,7 +19,7 @@ public class User {
         this.role = role;
     }
 
-    // Constructor for fetching data from database
+    // Constructor for fetching user from database
     public User(int userId, String username, String password, String role) {
         this.userId = userId;
         this.username = username;
