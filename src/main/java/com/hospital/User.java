@@ -13,6 +13,7 @@ public class User {
         validateUserName(username);
         validatePassword(password);
         validateRole(role);
+
         this.username = username.trim();
         this.password = password;
         this.role = role;
