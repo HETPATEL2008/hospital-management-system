@@ -18,7 +18,7 @@ public class UserDAO {
     // Method for find by username
     public User findByUsername(String username) throws SQLException {
 
-        String findUsername = "SELECT user_id, username, password, role FROM users WHERE username = ?";
+        String findUsername = "SELECT user_id, username, password, role FROM users WHERE BINARY username = ?";
 
         try(Connection connection = DatabaseConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(findUsername)) {

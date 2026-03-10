@@ -25,7 +25,7 @@ public class AuthenticationService {
 
         try {
             System.out.print("Enter Username: ");
-            String username = scanner.nextLine().trim();
+            String username = scanner.nextLine().trim().toLowerCase();
 
             System.out.print("Enter Password: ");
             String password = scanner.nextLine().trim();
@@ -61,7 +61,7 @@ public class AuthenticationService {
 
         try {
             System.out.print("Enter Username: ");
-            String username = scanner.nextLine().trim();
+            String username = scanner.nextLine().trim().toLowerCase();
 
             System.out.print("Enter Password: ");
             String password = scanner.nextLine().trim();
