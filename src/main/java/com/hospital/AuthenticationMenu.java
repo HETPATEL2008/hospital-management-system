@@ -3,6 +3,7 @@ package com.hospital;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class AuthenticationMenu {
@@ -17,7 +18,7 @@ public class AuthenticationMenu {
     private static final Scanner scanner = new Scanner(System.in);
 
     // Method for authentication
-    public User authMenu() {
+    public Optional<User> authMenu() {
 
         while (true) {
 
@@ -33,9 +34,9 @@ public class AuthenticationMenu {
 
                 // Login
                 case "1" -> {
-                    User user = authenticationService.login();
+                    Optional<User> user = authenticationService.login();
 
-                    if (user != null) {
+                    if (user.isPresent()) {
                         return user;     // Login success return to main
                     }
                 }
@@ -47,7 +48,7 @@ public class AuthenticationMenu {
                 case "0" -> {
                     logger.info("Application exited by user.");
                     System.out.println("Thank You!");
-                    return null;
+                    return Optional.empty();
                 }
 
                 default -> {

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class AuthenticationService {
@@ -57,7 +58,7 @@ public class AuthenticationService {
     }
 
     // Method for Login
-    public User login() {
+    public Optional<User> login() {
 
         try {
             System.out.print("Enter Username: ");
@@ -67,30 +68,30 @@ public class AuthenticationService {
             String password = scanner.nextLine().trim();
 
             // Find user by username
-            User user = userDAO.findByUsername(username);
+            Optional<User> user = userDAO.findByUsername(username);
 
             // Check if user exists or not
-            if (user == null) {
+            if (user.isEmpty()) {
                 logger.warn("Login failed - username not found: {}", username);
                 System.out.println("Invalid username or password.");
-                return null;
+                return Optional.empty();
             }
 
             // Check if plain password and hashed password matches
-            if (!BCrypt.checkpw(password, user.getPassword())) {
+            if (!BCrypt.checkpw(password, user.get().getPassword())) {
                 logger.warn("Login failed - wrong password for: {}", username);
                 System.out.println("Invalid username or password.");
-                return null;
+                return Optional.empty();
             }
 
             logger.info("Login successful for: {}", username);
-            System.out.println("Welcome, " + username + " | Role: " +  user.getRole());
+            System.out.println("Welcome, " + username + " | Role: " +  user.get().getRole());
             return user;
 
         } catch (SQLException e) {
             logger.error("Login failed - database error: {}", e.getMessage());
             System.out.println("Database error. Please try again.");
-            return null;
+            return Optional.empty();
         }
     }
 }

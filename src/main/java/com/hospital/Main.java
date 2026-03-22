@@ -3,6 +3,8 @@ package com.hospital;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
+
 public class Main {
 
     // Logger for tracking application operations
@@ -15,11 +17,11 @@ public class Main {
         AuthenticationMenu authenticationMenu = new AuthenticationMenu();
 
         // Start authentication and get logged-in user
-        User loggedInUser = authenticationMenu.authMenu();
+        Optional<User> loggedInUser = authenticationMenu.authMenu();
 
         // Check if user logged-in successfully or not
-        if (loggedInUser != null) {
-            logger.info("User {} logged in. Redirecting to MainMenu.", loggedInUser.getUsername());
+        if (loggedInUser.isPresent()) {
+            logger.info("User {} logged in. Redirecting to MainMenu.", loggedInUser.get().getUsername());
             System.out.println("Login successful - MainMenu coming soon");
 
         } else {

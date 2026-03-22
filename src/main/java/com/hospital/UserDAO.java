@@ -10,13 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import java.util.Optional;
+
 public class UserDAO {
 
     // Logger for tracking user operations
     private static final Logger logger = LoggerFactory.getLogger(UserDAO.class);
 
-    // Method for find by username
-    public User findByUsername(String username) throws SQLException {
+    // Method for find by username --- Uses Optional Class
+    public Optional<User> findByUsername(String username) throws SQLException {
 
         String findUsername = "SELECT user_id, username, password, role FROM users WHERE BINARY username = ?";
 
@@ -29,12 +31,12 @@ public class UserDAO {
 
                 if (resultSet.next()) {
 
-                    return new User(
+                    return Optional.of(new User(
                             resultSet.getInt("user_id"),
                             resultSet.getString("username"),
                             resultSet.getString("password"),
                             resultSet.getString("role")
-                    );
+                    ));
                 }
             }
 
@@ -43,7 +45,7 @@ public class UserDAO {
             throw e;
         }
 
-        return null;
+        return Optional.empty();
     }
 
     // Method for save new user
