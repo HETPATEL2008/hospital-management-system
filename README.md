@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Hospital Management System
 
 A console-based Hospital Management System built 
@@ -252,4 +251,3 @@ management.
 ## License
 
 MIT License — see [LICENSE](./LICENSE)
->>>>>>> ee9fec1468e096817df2a8186d9f94481e29112a
