@@ -27,7 +27,6 @@ public class User {
         this.role = role;
     }
 
-
     // Username validator
     private void validateUserName(String username) {
 
