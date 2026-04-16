@@ -123,9 +123,7 @@ public class Patient {
         return age;
     }
 
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
+    public String getBloodGroup() { return bloodGroup; }
 
     public String getPhone() {
         return phone;
