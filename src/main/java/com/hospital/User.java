@@ -14,9 +14,9 @@ public class User {
         validatePassword(password);
         validateRole(role);
 
-        this.username = username.trim();
+        this.username = username.trim().toLowerCase();
         this.password = password;
-        this.role = role;
+        this.role = role.trim().toUpperCase();
     }
 
     // Constructor for fetching user from database
@@ -126,7 +126,7 @@ public class User {
 
     public void setUsername(String username) {
         validateUserName(username);
-        this.username = username.trim();
+        this.username = username.trim().toLowerCase();
     }
 
     public void setPassword(String password) {
@@ -136,7 +136,7 @@ public class User {
 
     public void setRole(String role) {
         validateRole(role);
-        this.role = role;
+        this.role = role.trim().toUpperCase();
     }
 
     @Override
