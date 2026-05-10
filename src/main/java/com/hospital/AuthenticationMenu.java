@@ -8,16 +8,15 @@ import java.util.Scanner;
 
 public class AuthenticationMenu {
 
-    // Logger for tracking authentication operations
+    // Logger for tracking authentication menu
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationMenu.class);
 
-    // Initialize object of AuthenticationService class
-    private static final AuthenticationService authenticationService = new AuthenticationService();
+    // Initializes object of AuthenticationService
+    private final AuthenticationService authenticationService = new AuthenticationService();
 
-    // Scanner for take input
-    private static final Scanner scanner = new Scanner(System.in);
+    // Scanner for taking user input
+    private final Scanner scanner = new Scanner(System.in);
 
-    // Method for authentication
     public Optional<User> authMenu() {
 
         while (true) {
@@ -32,21 +31,36 @@ public class AuthenticationMenu {
 
             switch (choice) {
 
-                // Login
+                // For Login
                 case "1" -> {
-                    Optional<User> user = authenticationService.login();
+                    System.out.print("Enter Username: ");
+                    String username = scanner.nextLine().trim().toLowerCase();
 
-                    if (user.isPresent()) {
-                        return user;     // Login success return to main
-                    }
+                    System.out.print("Enter Password: ");
+                    String password = scanner.nextLine().trim();
+
+                    Optional<User> user = authenticationService.login(username, password);
+
+                    if (user.isPresent())
+                        return user;
                 }
 
-                // Sign Up
-                case "2" -> authenticationService.signUp();
+                // For SignUp
+                case "2" -> {
+                    System.out.print("Enter Username: ");
+                    String username = scanner.nextLine().trim().toLowerCase();
 
-                // Exit
+                    System.out.print("Enter Password: ");
+                    String password = scanner.nextLine().trim();
+
+                    System.out.print("Enter Role: ");
+                    String role = scanner.nextLine().trim().toUpperCase();
+
+                    authenticationService.signUp(username, password, role);
+                }
+
+                // For Exit
                 case "0" -> {
-                    logger.info("Application exited by user.");
                     System.out.println("Thank You!");
                     return Optional.empty();
                 }
