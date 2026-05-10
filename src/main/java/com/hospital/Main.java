@@ -22,7 +22,8 @@ public class Main {
         // Check if user logged-in successfully or not
         if (loggedInUser.isPresent()) {
             logger.info("User {} logged in. Redirecting to MainMenu.", loggedInUser.get().getUsername());
-            System.out.println("Login successful - MainMenu coming soon");
+            System.out.println("Welcome, " + loggedInUser.get().getUsername() + " | Role: " + loggedInUser.get().getRole());
+            System.out.println("Redirecting to MainMenu...");
 
         } else {
             logger.info("Application exited by user.");
